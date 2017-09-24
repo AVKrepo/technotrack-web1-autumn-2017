@@ -5,17 +5,13 @@ import os
 
 def get_response(request):
     request_text = request.decode()
-    print("Received:\n", request_text)  ## TODELETE
     if request_text == "":
         response = get_http_response(404, "Not found") + get_html_page("Page not found")
-        print("Sent:\n", response)  ## TODELETE
         return response.encode()
     request_lines = request_text.split("\n")
-    print("Request lines\n", request_lines)  ## TODELETE
     method = request_lines[0].split()[0]
     if method != "GET":
         response = get_http_response(404, "Not found") + get_html_page("Page not found")
-        print("Sent:\n", response)  ## TODELETE
         return response.encode()
     path = request_lines[0].split()[1]
     if path == "/":
@@ -24,16 +20,13 @@ def get_response(request):
             if "User-Agent:" in line:
                 user_agent = " ".join(line.split()[1:])
         response = get_http_response(200, "OK") + get_html_page("Hello mister! <br />You are: " + user_agent)
-        print("Sent:\n", response)  ## TODELETE
         return response.encode()
     if path == "/test/":
         response = get_http_response(200, "OK") + get_html_page(request_text)
-        print("Sent:\n", response)  ## TODELETE
         return response.encode()
     if path == "/media/":
         files = os.listdir("./files")
         response = get_http_response(200, "OK") + get_html_page(str(files))
-        print("Sent:\n", response)  ## TODELETE
         return response.encode()
     if path[0:7] == "/media/":
         file_path = "./files/" + path[7:]
@@ -42,14 +35,11 @@ def get_response(request):
             with open(file_path) as file:
                 content = file.read()
             response = get_http_response(200, "OK") + get_html_page(content)
-            print("Sent:\n", response)  ## TODELETE
             return response.encode()
         else:
             response = get_http_response(404, "Not found") + get_html_page("File not found")
-            print("Sent:\n", response)  ## TODELETE
             return response.encode()
     response = get_http_response(404, "Not found") + get_html_page("Page not found")
-    print("Sent:\n", response)  ## TODELETE
     return response.encode()
 
 
