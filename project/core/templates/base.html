@@ -6,17 +6,21 @@
 </head>
 <body>
     {% block title %}
-        <h1>Блоги обо всём!</h1>
+        <h1><a href="{% url "main_page" %}">Лучший сайт с блогами</a></h1>
     {% endblock %}
 
     {% block menu %}
-
-        <h2>This is main menu</h2>
+        <div>
+            <a href="{% url "blogs:posts_detail" %}">Посты</a>
+            <a href="{% url "blogs:categories_detail" %}">Категории</a>
+            <a href="{% url "users:users_detail" %}">Пользователи</a>
+            <a href="{% url "comments:comments_detail" %}">Последние комментарии</a>
+        </div>
     {% endblock %}
 
 
     {% block content %}
-        <div>This is content</div>
+        <div>The content of main page. TODO</div>
     {% endblock %}
 
     {% block footer %}

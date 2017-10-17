@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Список категорий</h2>
+    <ul>
+        {% for category in object_list %}
+            <a href="/categories/{{ category.id }}/"><li>{{ category }}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock %}

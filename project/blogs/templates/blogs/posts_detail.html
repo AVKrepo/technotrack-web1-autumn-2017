@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Список постов</h2>
+    <ul>
+        {% for post in object_list %}
+            <a href="/posts/{{ post.id }}/"><li>{{ post }}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock %}

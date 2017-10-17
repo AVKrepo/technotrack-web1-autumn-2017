@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ user }}</h2>
+    <div>Работает в компании {{ user.company_name }}</div>
+    <div>Зарегистрирован {{ user.date_joined }}</div>
+    <h3>Посты</h3>
+    <ul>
+        {% for post in user.post_set.all %}
+            <li>
+            <a href="/posts/{{ post.id }}/">
+                {{ post.title }}
+            </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Комментарии</h3>
+    <ul>
+        {% for comment in user.comment_set.all %}
+            <a href="/comments/{{ comment.id }}/">
+                <li>{{ comment }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+{% endblock %}

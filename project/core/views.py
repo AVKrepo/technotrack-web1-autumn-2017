@@ -1,27 +1,20 @@
 from django.shortcuts import render
-
-# Create your views here.
-
-
-def render_main_page(request):
-    return render(request, "main_page.html")
+from django.views.generic import DetailView, ListView
+from core.models import User
 
 
-def render_posts(request):
-    return render(request, "posts.html")
+class UsersDetail(ListView):
+    template_name = 'core/users_detail.html'
+    context_object_name = 'users'
+    queryset = User.objects.all()
 
 
-def render_blogs(request):
-    return render(request, "blogs.html")
+class UserDetail(DetailView):
+    template_name = 'core/user_detail.html'
+    model = User
+    context_object_name = 'user'
 
 
-def render_posts_in_blog(request, name):
-    return render(request, "posts_in_blog.html", {'name': name})
 
-
-def render_post(request, number):
-    return render(request, "post.html", {'number': number})
-
-
-def render_profile(request, name):
-    return render(request, "profile.html", {'name': name})
+# def render_profile(request, name):
+#     return render(request, "profile.html", {'name': name})

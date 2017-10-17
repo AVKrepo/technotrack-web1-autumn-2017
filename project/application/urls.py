@@ -22,14 +22,10 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
-    # url(r'^blogs/', include('blogs.urls', namespace='blogs')),
-    # url(r'^$', core.views.render_main_page),
-    # url(r"^blogs/$", core.views.render_blogs),
-    # url(r"^blogs/(?P<name>\w+)/$", core.views.render_posts_in_blog),
-    # url(r"^posts/$", core.views.render_posts),
-    # url(r"^posts/(?P<number>\d+)/$", core.views.render_post),
-    # url(r"^user/(?P<name>\w*)/$", core.views.render_profile),
+    url(r'^$', TemplateView.as_view(template_name='base.html'), name='main_page'),
+    url(r'^', include('blogs.urls', namespace='blogs')),
+    url(r'^users/', include('core.urls', namespace='users')),
+    url(r'^comments/', include('comments.urls', namespace='comments')),
 ]
 
 if settings.DEBUG is True:

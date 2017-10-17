@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Список последних комментариев</h2>
+    <ul>
+        {% for comment in object_list %}
+            <a href="/comments/{{ comment.id }}/"><li>{{ comment }}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock %}

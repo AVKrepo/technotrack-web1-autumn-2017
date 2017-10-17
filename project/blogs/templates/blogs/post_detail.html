@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <h3>{{ post.author }}, {{ post.created_at }}</h3>
+    {% for category in post.categories.all %}
+        <a href="/categories/{{ category.id }}/">{{ category }} </a>
+    {% endfor %}
+    <p>{{ post.text }}</p>
+    <h3>Комментарии</h3>
+    {% for comment in post.comment_set.all %}
+        <a href="/comments/{{ comment.id }}/">
+            {{ comment.author }},
+            Re:{{ comment.title }},
+            {{ comment.updated_at }}
+        </a>
+        <p>{{ comment.text }}</p>
+    {% endfor %}
+{% endblock %}

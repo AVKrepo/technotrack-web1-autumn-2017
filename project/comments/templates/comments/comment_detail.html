@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ comments }}</h2>
+    <h3> Опубликовано {{ comments.created_at }}, последнее изменение {{ comments.created_at }}</h3>
+    <p>{{ comments.text }}</p>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ category }}</h2>
+    {% for post in category.posts.all %}
+        <a href="/posts/{{ post.id }}/"><li>{{ post }}</li></a>
+    {% endfor %}
+{% endblock %}

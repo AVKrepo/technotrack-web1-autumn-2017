@@ -22,7 +22,11 @@ class Comment(models.Model):
     is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
-        return u'{}: {}'.format(self.post.title, self.title)
+        return u'{} Re:{} | from {}'.format(
+            self.post.title,
+            self.title,
+            self.author
+        )
 
     class Meta:
         ordering = '-id',
